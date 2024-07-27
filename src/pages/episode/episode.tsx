@@ -1,3 +1,6 @@
+import { useParams } from "react-router";
+
 export function Episode() {
-  return <p>episode</p>;
+  const { id } = useParams();
+  return <p>episode {id}</p>;
 }
