@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { File } from "../../types/files";
 
 export function Home() {
-  const [episodes, setEpisodes] = useState<File[]>([]);
   const [seasons, setSeasons] = useState<string[]>([]);
 
   useEffect(() => {
@@ -30,15 +28,6 @@ export function Home() {
           <a href={`./${season}`}>{season?.replace("S", "Season ")}</a>
         </div>
       ))}
-      {/* {episodes.map(({ url, displayName }) => {
-        if (url.endsWith(".mp4")) {
-          return (
-            <div>
-              <a href={`./episode/${url}`}>{displayName}</a>
-            </div>
-          );
-        }
-      })} */}
     </div>
   );
 }

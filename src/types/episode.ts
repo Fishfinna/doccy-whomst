@@ -1,4 +1,4 @@
-export interface File {
+export interface episode {
   name: string;
   url: string;
   displayName: string;
