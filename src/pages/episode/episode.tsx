@@ -6,11 +6,15 @@ export function Episode() {
 
   return (
     <>
-      <h1>episode</h1>
+      <h1>{id?.replace(/^S\d+E\d+\s+-\s+/i, "").replace(/\.[^/.]+$/, "")}</h1>
 
-      <video>
-        <source src={baseUrl + id?.replaceAll(" ", "%20")} />
-      </video>
+      {id?.endsWith(".mp4") ? (
+        <video width="320" height="240" controls={true}>
+          <source src={baseUrl + id} />
+        </video>
+      ) : null}
+
+      <br />
       <a href={baseUrl + id?.replaceAll(" ", "%20")}>
         {baseUrl + id?.replaceAll(" ", "%20")}
       </a>
