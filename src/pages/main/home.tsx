@@ -15,5 +15,13 @@ export function Home() {
     fetchEpisodes();
   }, []);
 
-  return <p>{JSON.stringify(episodes[0])}</p>;
+  return (
+    <p>
+      {episodes.map(({ name }) => (
+        <div>
+          <a href={`./episode/${name}`}>{name}</a>
+        </div>
+      ))}
+    </p>
+  );
 }
