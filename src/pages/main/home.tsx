@@ -22,12 +22,15 @@ export function Home() {
   }, []);
 
   return (
-    <div>
-      {seasons.map((season) => (
-        <div>
-          <a href={`./${season}`}>{season?.replace("S", "Season ")}</a>
-        </div>
-      ))}
-    </div>
+    <>
+      <h1>Doctor Who</h1>
+      <div>
+        {seasons.map((season) => (
+          <div>
+            <a href={`./${season}`}>{season?.replace("S", "Season ")}</a>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
