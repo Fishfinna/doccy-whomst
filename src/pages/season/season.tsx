@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { episode } from "../../types/episode";
 import axios from "axios";
+import LinkBlock from "../../components/link-block";
 
 export function Season() {
   const { season } = useParams();
@@ -29,9 +30,6 @@ export function Season() {
 
   return (
     <>
-      <div>
-        <a></a>
-      </div>
       <p>{season?.replace("S", "SEASON ")}</p>
       {episodes.map(({ name }) => {
         if (name.endsWith(".mp4")) {
@@ -41,9 +39,10 @@ export function Season() {
             const episodeTitle = episodeMatch[2];
             return (
               <div key={name}>
-                <a href={`./${season}/${name}`}>
-                  Episode {episodeNumber} - {episodeTitle}
-                </a>
+                <LinkBlock
+                  name={`Episode ${episodeNumber} - ${episodeTitle}`}
+                  href={`./${season}/${name}`}
+                />
               </div>
             );
           }
