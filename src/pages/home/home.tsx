@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import LinkBlock from "../../components/link-block/link-block";
 
 export function Home() {
   const [seasons, setSeasons] = useState<string[]>([]);
@@ -26,8 +27,11 @@ export function Home() {
       <h1>Doctor Who</h1>
       <div>
         {seasons.map((season) => (
-          <div>
-            <a href={`./${season}`}>{season?.replace("S", "Season ")}</a>
+          <div key={season}>
+            <LinkBlock
+              name={season?.replace("S", "Season ")}
+              href={`./${season}`}
+            />
           </div>
         ))}
       </div>
