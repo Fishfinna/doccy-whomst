@@ -1,18 +1,18 @@
 .link-block-container {
     display: flex;
     align-items: center;
-    background-color: #f2f2f2;
-    margin: 8px;
-    padding: 5px;
+    background-color: #281c8c;
+    margin: 10px;
+    padding: 5px 8px;
     border-radius: 10px;
+
 
     * {
         text-decoration: none;
-        color: #19181e;
+        color: #e6e5e7;
+    }
 
-        &:hover {
-            color: #645b77;
-            text-decoration: underline;
-        }
+    &:hover {
+        box-shadow: 0 0 0 3px #ffffff, 0 0 0 6px #281c8c;
     }
 }

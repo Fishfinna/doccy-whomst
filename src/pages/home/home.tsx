@@ -11,12 +11,18 @@ export function Home() {
         "https://archive.org/metadata/doctor-who_202210/files"
       );
       const results = response.data.result;
-      const seasons = results.map((result: File) => {
-        const match = result.name.match(/^S\d+/i);
-        return match ? match[0] : null;
-      });
+      const seasons = [
+        ...new Set(
+          results
+            .map((result: File) => {
+              const match = result.name.match(/^S\d+/i);
+              return match ? match[0] : null;
+            })
+            .filter((name: string) => !!name) as string[]
+        ),
+      ];
 
-      setSeasons([...new Set(seasons as string[])]);
+      setSeasons(seasons);
     }
 
     fetchEpisodes();
