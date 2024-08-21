@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import LinkBlock from "../../components/link-block/link-block";
+import "./home.scss";
 
 export function Home() {
   const [seasons, setSeasons] = useState<string[]>([]);
@@ -30,7 +31,6 @@ export function Home() {
 
   return (
     <>
-      <h1>Doctor Who</h1>
       <div>
         {seasons.map((season) => (
           <div key={season}>

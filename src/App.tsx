@@ -7,6 +7,7 @@ import "./App.scss";
 export function App() {
   return (
     <div className="app">
+      <img src="/images/logo.png" className="home-logo" />
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/:season" element={<Season />}></Route>

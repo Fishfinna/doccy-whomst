@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import "./episode.scss";
 
 export function Episode() {
   const { id } = useParams();
@@ -16,7 +17,7 @@ export function Episode() {
   }
 
   return (
-    <>
+    <div className="episode-container">
       <h1>{episodeName}</h1>
       <h2>{formattedEpisodeNumber}</h2>
 
@@ -25,6 +26,6 @@ export function Episode() {
           <source src={baseUrl + id} />
         </video>
       ) : null}
-    </>
+    </div>
   );
 }

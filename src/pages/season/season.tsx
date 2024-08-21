@@ -30,7 +30,7 @@ export function Season() {
 
   return (
     <>
-      <p>{season?.replace("S", "SEASON ")}</p>
+      <h1>{season?.replace("S", "SEASON ")}</h1>
       {episodes.map(({ name }) => {
         if (name.endsWith(".mp4")) {
           const episodeMatch = name.match(/^S\d+E(\d+)\s+-\s+(.*)\.mp4$/i);
