@@ -1,0 +1,41 @@
+.breadcrumbs {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 10px;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    color: #3a4367;
+
+    a {
+        text-decoration: none;
+
+        &:focus,
+        &:visited,
+        &:active {
+            color: #435084;
+        }
+    }
+
+    &-list {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+
+        .breadcrumb-item {
+            text-decoration: none;
+
+            &+.breadcrumb-item::before {
+                content: "/";
+                padding: 0 8px;
+                color: #6c757d;
+            }
+
+            &.active {
+                cursor: pointer;
+            }
+        }
+    }
+}
