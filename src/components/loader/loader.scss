@@ -1,0 +1,43 @@
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 0 3px #3b5679 inset;
+    border-radius: 50%;
+    position: relative;
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: calc(50% - 12.5px);
+    box-shadow: inherit;
+    width: 25px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform-origin: 50% calc(100% - 5px);
+    animation: l7 1.5s linear infinite;
+    box-shadow: 0 0 0 2px #3b5679 inset;
+}
+
+.loader:after {
+    top: calc(100% + 0px);
+    transform-origin: 50% -28px;
+    animation-delay: -0.75s;
+    width: 15px;
+    animation: l6 2s linear infinite;
+    background-color: #3b5679;
+}
+
+@keyframes l7 {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes l6 {
+    to {
+        transform: rotate(360deg);
+    }
+}

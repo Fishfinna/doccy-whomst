@@ -8,9 +8,11 @@ export function Breadcrumbs() {
   return (
     <div className="breadcrumbs">
       <ol className="breadcrumbs-list">
-        <li className="breadcrumb-item">
-          <Link to="/">Home</Link>
-        </li>
+        {paths.length ? (
+          <li className="breadcrumb-item">
+            <Link to="/">Home</Link>
+          </li>
+        ) : null}
         {paths.map((path, index) => {
           const routeTo = `/${paths.slice(0, index + 1).join("/")}`;
           const isLast = index === paths.length - 1;

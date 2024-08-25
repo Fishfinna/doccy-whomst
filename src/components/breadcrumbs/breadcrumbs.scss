@@ -2,10 +2,12 @@
     position: fixed;
     left: 0;
     top: 0;
-    margin: 10px;
+    padding: 10px;
+    border-radius: 0 0 10px;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     color: #3a4367;
+    background-color: #ffffffb5;
 
     a {
         text-decoration: none;
