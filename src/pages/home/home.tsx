@@ -1,16 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import LinkBlock from "../../components/link-block/link-block";
 import "./home.scss";
 
-export function Home() {
+export function Home(params: { files: any }) {
   const [seasons, setSeasons] = useState<string[]>([]);
 
   useEffect(() => {
     async function fetchEpisodes() {
-      const response = await axios.get(
-        "https://archive.org/metadata/doctor-who_202210/files"
-      );
+      const response = params.files;
       const results = response.data.result;
       const seasons = [
         ...new Set(

@@ -1,9 +1,13 @@
+.loading-container {
+    position: relative;
+    top: 20vh;
+}
+
 .loader {
     width: 50px;
     aspect-ratio: 1;
     box-shadow: 0 0 0 3px #3b5679 inset;
     border-radius: 50%;
-    position: relative;
 }
 
 .loader:before,
