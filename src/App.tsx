@@ -13,9 +13,10 @@ export function App() {
 
   useEffect(() => {
     async function fetchFiles() {
-      setFiles(
-        await axios.get("https://archive.org/metadata/doctor-who_202210/files")
+      const response = await axios.get(
+        "https://archive.org/metadata/doctor-who_202210/files"
       );
+      setFiles(response.data.result);
     }
 
     fetchFiles();
@@ -32,8 +33,8 @@ export function App() {
       ) : (
         <Routes>
           <Route path="" element={<Home files={files} />} />
-          <Route path="/:season" element={<Season />}></Route>
-          <Route path="/:season/:id" element={<Episode />} />
+          <Route path="/:season" element={<Season files={files} />}></Route>
+          <Route path="/:season/:id" element={<Episode files={files} />} />
         </Routes>
       )}
     </div>

@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { episode } from "../../types/episode";
-import axios from "axios";
 import LinkBlock from "../../components/link-block/link-block";
 
-export function Season() {
+export function Season(params: { files: any }) {
   const { season } = useParams();
   const [episodes, setEpisodes] = useState<episode[]>([]);
 
   useEffect(() => {
     async function fetchEpisodes() {
-      const response = await axios.get(
-        "https://archive.org/metadata/doctor-who_202210/files"
-      );
-
-      const results = response.data.result;
       const filteredEpisodes = [];
-      for (const result of results) {
+      for (const result of params.files) {
         if (result.name.startsWith(season)) {
           filteredEpisodes.push(result);
         }

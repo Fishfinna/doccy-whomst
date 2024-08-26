@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import "./episode.scss";
 
-export function Episode() {
+export function Episode(params: { files: any }) {
   const { id } = useParams();
   const baseUrl = "https://archive.org/0/items/doctor-who_202210/";
   const episodeName = id

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import LinkBlock from "../../components/link-block/link-block";
 import "./home.scss";
@@ -7,11 +8,9 @@ export function Home(params: { files: any }) {
 
   useEffect(() => {
     async function fetchEpisodes() {
-      const response = params.files;
-      const results = response.data.result;
       const seasons = [
         ...new Set(
-          results
+          params.files
             .map((result: File) => {
               const match = result.name.match(/^S\d+/i);
               return match ? match[0] : null;
