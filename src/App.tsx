@@ -9,18 +9,24 @@ import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/loader";
 
 export function App() {
-  const [files, setFiles] = useState(null);
+  const [files, setFiles] = useState(() => {
+    const savedFiles = sessionStorage.getItem("files");
+    return savedFiles ? JSON.parse(savedFiles) : null;
+  });
 
   useEffect(() => {
-    async function fetchFiles() {
-      const response = await axios.get(
-        "https://archive.org/metadata/doctor-who_202210/files"
-      );
-      setFiles(response.data.result);
-    }
+    if (!files) {
+      const fetchFiles = async () => {
+        const response = await axios.get(
+          "https://archive.org/metadata/doctor-who_202210/files"
+        );
+        setFiles(response.data.result);
+        sessionStorage.setItem("files", JSON.stringify(response.data.result));
+      };
 
-    fetchFiles();
-  }, []);
+      fetchFiles();
+    }
+  }, [files]);
 
   return (
     <div className="app">
@@ -33,7 +39,7 @@ export function App() {
       ) : (
         <Routes>
           <Route path="" element={<Home files={files} />} />
-          <Route path="/:season" element={<Season files={files} />}></Route>
+          <Route path="/:season" element={<Season files={files} />} />
           <Route path="/:season/:id" element={<Episode files={files} />} />
         </Routes>
       )}
