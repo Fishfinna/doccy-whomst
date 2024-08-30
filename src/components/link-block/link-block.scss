@@ -1,10 +1,13 @@
-.link-block-container {
+.link-block-container,
+button {
     display: flex;
     align-items: center;
     background-color: #3a4367;
+    color: #e6e5e7;
     margin: 12px;
     padding: 10px 12px;
     border-radius: 10px;
+    border: none;
     cursor: pointer;
 
 

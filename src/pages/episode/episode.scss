@@ -14,4 +14,13 @@
         min-width: 40vw;
         height: auto;
     }
+
+    .navigation-buttons {
+        display: flex;
+        flex-direction: row;
+
+        button {
+            padding: 10px 5vw;
+        }
+    }
 }

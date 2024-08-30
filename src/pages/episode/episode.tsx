@@ -26,6 +26,10 @@ export function Episode(params: { files: any }) {
           <source src={baseUrl + id} />
         </video>
       ) : null}
+      <div className="navigation-buttons">
+        <button>Previous</button>
+        <button>Next</button>
+      </div>
     </div>
   );
 }
