@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import "./episode.scss";
+import LinkBlock from "../../components/link-block/link-block";
 
 export function Episode(params: { files: any }) {
   const { id } = useParams();
@@ -11,9 +12,16 @@ export function Episode(params: { files: any }) {
   const episodeIndex = params.files.indexOf(
     params.files.find(({ name }: { name: string }) => id == name)
   );
-  console.log(episodeIndex, params.files);
-  let formattedEpisodeNumber;
+  const nextEpisode = params.files[episodeIndex + 1];
+  const nextEpisodeNames = nextEpisode?.name.match(
+    /^S\d+E(\d+)\s+-\s+(.*)\.mp4$/i
+  );
+  const previousEpisode = params.files[episodeIndex - 1];
+  const previousEpisodeNames = previousEpisode?.name.match(
+    /^S\d+E(\d+)\s+-\s+(.*)\.mp4$/i
+  );
 
+  let formattedEpisodeNumber;
   if (match) {
     const season = parseInt(match[1], 10);
     const episode = parseInt(match[2], 10);
@@ -31,10 +39,18 @@ export function Episode(params: { files: any }) {
         </video>
       ) : null}
       <div className="navigation-buttons">
-        {/* TODO: set this up to route to the next or previous episode, and maybe say what episode that is? */}
-        {episodeIndex > 0 ? <button onClick={() => {}}>Previous</button> : null}
+        {episodeIndex > 0 ? (
+          <LinkBlock
+            name={`Previous: ${previousEpisodeNames[2]}
+              `}
+            href={`./${previousEpisode.name}`}
+          />
+        ) : null}
         {episodeIndex != params.files.length - 1 ? (
-          <button onClick={() => {}}>Next</button>
+          <LinkBlock
+            name={`Next: ${nextEpisodeNames[2]}`}
+            href={`./${nextEpisode.name}`}
+          />
         ) : null}
       </div>
     </div>

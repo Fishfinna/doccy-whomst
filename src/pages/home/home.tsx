@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import LinkBlock from "../../components/link-block/link-block";
 import "./home.scss";
 
