@@ -8,6 +8,10 @@ export function Episode(params: { files: any }) {
     ?.replace(/^S\d+E\d+\s+-\s+/i, "")
     .replace(/\.[^/.]+$/, "");
   const match = id?.match(/S(\d+)E(\d+)/);
+  const episodeIndex = params.files.indexOf(
+    params.files.find(({ name }: { name: string }) => id == name)
+  );
+  console.log(episodeIndex, params.files);
   let formattedEpisodeNumber;
 
   if (match) {
@@ -27,8 +31,11 @@ export function Episode(params: { files: any }) {
         </video>
       ) : null}
       <div className="navigation-buttons">
-        <button>Previous</button>
-        <button>Next</button>
+        {/* TODO: set this up to route to the next or previous episode, and maybe say what episode that is? */}
+        {episodeIndex > 0 ? <button onClick={() => {}}>Previous</button> : null}
+        {episodeIndex != params.files.length - 1 ? (
+          <button onClick={() => {}}>Next</button>
+        ) : null}
       </div>
     </div>
   );

@@ -9,10 +9,7 @@ import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/loader";
 
 export function App() {
-  const [files, setFiles] = useState(() => {
-    const savedFiles = sessionStorage.getItem("files");
-    return savedFiles ? JSON.parse(savedFiles) : null;
-  });
+  const [files, setFiles] = useState();
 
   useEffect(() => {
     if (!files) {
@@ -20,13 +17,16 @@ export function App() {
         const response = await axios.get(
           "https://archive.org/metadata/doctor-who_202210/files"
         );
-        setFiles(response.data.result);
-        sessionStorage.setItem("files", JSON.stringify(response.data.result));
+        const mp4Files = response.data.result.filter(
+          ({ name }: { name: string }) => name.endsWith(".mp4")
+        );
+        console.log("here");
+        setFiles(mp4Files);
       };
 
       fetchFiles();
     }
-  }, [files]);
+  }, []);
 
   return (
     <div className="app">

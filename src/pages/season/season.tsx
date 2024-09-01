@@ -26,20 +26,18 @@ export function Season(params: { files: any }) {
     <>
       <h1>{season?.replace("S", "SEASON ")}</h1>
       {episodes.map(({ name }) => {
-        if (name.endsWith(".mp4")) {
-          const episodeMatch = name.match(/^S\d+E(\d+)\s+-\s+(.*)\.mp4$/i);
-          if (episodeMatch) {
-            const episodeNumber = episodeMatch[1];
-            const episodeTitle = episodeMatch[2];
-            return (
-              <div key={name}>
-                <LinkBlock
-                  name={`Episode ${episodeNumber} - ${episodeTitle}`}
-                  href={`./${season}/${name}`}
-                />
-              </div>
-            );
-          }
+        const episodeMatch = name.match(/^S\d+E(\d+)\s+-\s+(.*)\.mp4$/i);
+        if (episodeMatch) {
+          const episodeNumber = episodeMatch[1];
+          const episodeTitle = episodeMatch[2];
+          return (
+            <div key={name}>
+              <LinkBlock
+                name={`Episode ${episodeNumber} - ${episodeTitle}`}
+                href={`./${season}/${name}`}
+              />
+            </div>
+          );
         }
         return null;
       })}
