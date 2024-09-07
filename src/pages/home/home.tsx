@@ -28,6 +28,7 @@ export function Home(params: { files: any }) {
   return (
     <>
       <div>
+        <h3>you were last watching: </h3>
         {seasons.map((season) => (
           <div key={season}>
             <LinkBlock
