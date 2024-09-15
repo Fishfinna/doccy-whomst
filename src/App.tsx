@@ -21,7 +21,8 @@ export function App() {
         "https://archive.org/metadata/doctor-who_202210/files"
       );
       const mp4Files = response.data.result.filter(
-        ({ name }: { name: string }) => name.endsWith(".mp4")
+        ({ name }: { name: string }) =>
+          name.endsWith(".mp4") && !name.includes(".ia")
       );
       console.log("Files fetched");
       setFiles(mp4Files);

@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { useEffect } from "react";
 import "./episode.scss";
 import LinkBlock from "../../components/link-block/link-block";
 
@@ -21,12 +22,18 @@ export function Episode(params: { files: any }) {
     /^S\d+E(\d+)\s+-\s+(.*)\.mp4$/i
   );
 
-  let formattedEpisodeNumber;
+  let formattedEpisodeNumber: string = "";
   if (match) {
     const season = parseInt(match[1], 10);
     const episode = parseInt(match[2], 10);
     formattedEpisodeNumber = `Season ${season}: Episode ${episode}`;
   }
+
+  useEffect(() => {
+    return () => {
+      // add the last watched here
+    };
+  }, []);
 
   return (
     <div className="episode-container">
