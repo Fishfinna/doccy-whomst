@@ -31,6 +31,7 @@ export function Episode(params: { files: any }) {
 
   useEffect(() => {
     return () => {
+      console.log(formattedEpisodeNumber);
       // add the last watched here
     };
   }, []);
