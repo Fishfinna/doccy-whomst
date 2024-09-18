@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, url } from "react-router";
 import { useEffect } from "react";
 import "./episode.scss";
 import LinkBlock from "../../components/link-block/link-block";
@@ -30,9 +30,18 @@ export function Episode(params: { files: any }) {
   }
 
   useEffect(() => {
+    async function storeEpisode() {
+      sessionStorage.setItem(
+        "lastWatched",
+        JSON.stringify({
+          name: formattedEpisodeNumber,
+          url: window.location.pathname,
+        })
+      );
+    }
+
     return () => {
-      console.log(formattedEpisodeNumber);
-      // add the last watched here
+      storeEpisode(); //TODO: set this up to read on the front page
     };
   }, []);
 
