@@ -10,6 +10,7 @@ import { Loader } from "./components/loader/loader";
 
 export function App() {
   const [files, setFiles] = useState<any | null>(null);
+  const [lastWatched, setLastWatched] = useState<any | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -42,6 +43,13 @@ export function App() {
     } else {
       setFiles(JSON.parse(storedFiles));
     }
+    if (location.pathname == "/") {
+      if (sessionStorage.getItem("lastWatched")) {
+        setLastWatched(
+          JSON.parse(sessionStorage.getItem("lastWatched") as string)
+        );
+      }
+    }
   }, [location.pathname]);
 
   return (
@@ -54,7 +62,10 @@ export function App() {
         <Loader />
       ) : (
         <Routes>
-          <Route path="/" element={<Home files={files} />} />
+          <Route
+            path="/"
+            element={<Home files={files} lastWatched={lastWatched} />}
+          />
           <Route path="/:season" element={<Season files={files} />} />
           <Route path="/:season/:id" element={<Episode files={files} />} />
         </Routes>

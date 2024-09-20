@@ -1,10 +1,11 @@
-import { useParams, url } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { useEffect } from "react";
 import "./episode.scss";
 import LinkBlock from "../../components/link-block/link-block";
 
 export function Episode(params: { files: any }) {
   const { id } = useParams();
+  const { pathname } = useLocation();
   const baseUrl = "https://archive.org/0/items/doctor-who_202210/";
   const episodeName = id
     ?.replace(/^S\d+E\d+\s+-\s+/i, "")
@@ -35,13 +36,13 @@ export function Episode(params: { files: any }) {
         "lastWatched",
         JSON.stringify({
           name: formattedEpisodeNumber,
-          url: window.location.pathname,
+          url: pathname,
         })
       );
     }
 
     return () => {
-      storeEpisode(); //TODO: set this up to read on the front page
+      storeEpisode();
     };
   }, []);
 

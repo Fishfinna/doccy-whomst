@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import LinkBlock from "../../components/link-block/link-block";
 import "./home.scss";
 
-export function Home(params: { files: any }) {
+export function Home(params: { files: any; lastWatched: any }) {
   const [seasons, setSeasons] = useState<string[]>([]);
 
   useEffect(() => {
@@ -27,8 +27,16 @@ export function Home(params: { files: any }) {
 
   return (
     <>
+      {params.lastWatched ? (
+        <div className="last-watching">
+          <h3>you were last watching:</h3>
+          <LinkBlock
+            name={params.lastWatched.name}
+            href={params.lastWatched.url}
+          />
+        </div>
+      ) : null}
       <div>
-        <h3>you were last watching: </h3>
         {seasons.map((season) => (
           <div key={season}>
             <LinkBlock
