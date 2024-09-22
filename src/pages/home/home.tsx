@@ -27,6 +27,7 @@ export function Home(params: { files: any; lastWatched: any }) {
 
   return (
     <>
+      <h1>Classic Doctor Who</h1>
       {params.lastWatched ? (
         <div className="last-watching">
           <h3>you were last watching:</h3>
