@@ -23,7 +23,7 @@ export function Home(params: { files: any; lastWatched: any }) {
     }
 
     fetchEpisodes();
-  }, []);
+  }, [params.files]);
 
   return (
     <>
